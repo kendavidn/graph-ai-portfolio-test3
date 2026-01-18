@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kene David Nwosu | Generative AI Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-primary: #38bdf8;
+            --accent-secondary: #818cf8;
+            --accent-tertiary: #2dd4bf;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(148, 163, 184, 0.1);
+            --glass-shine: rgba(255, 255, 255, 0.05);
+            --gradient-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .background-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: var(--bg-color);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            border-radius: 50%;
+            animation: float 20s infinite alternate;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--accent-primary);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: var(--accent-secondary);
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 40%;
+            width: 30vw;
+            height: 30vw;
+            background: var(--accent-tertiary);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, 50px) scale(1.1); }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; line-height: 1.1; letter-spacing: -0.02em; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; position: relative; display: inline-block; }
+        h3 { font-size: 1.5rem; color: var(--accent-primary); }
+
+        .gradient-text {
+            background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.5);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Layout */
+        section {
+            padding: 6rem 10%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            align-items: flex-start;
+            padding-top: 8rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-tertiary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-shine), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+        }
+
+        /* About Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Timeline / Modules */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--accent-secondary);
+        }
+
+        .module-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Submissions Grid */
+        .submissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .submission-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+
+        .status-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            background: rgba(45, 212, 191, 0.2);
+            color: var(--accent-tertiary);
+            margin-bottom: 0.5rem;
+        }
+
+        .status-pending {
+            background: rgba(148, 163, 184, 0.2);
+            color: #94a3b8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 10%;
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            section { padding: 4rem 5%; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplified for mobile */
+            .logo { z-index: 101; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <i data-lucide="sparkles"></i>
+            Kene.AI
+        </a>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#course">The Course</a>
+            <a href="#submissions">Submissions</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <p class="hero-subtitle">Portfolio Submission</p>
+        <h1>Generative AI for <br><span class="gradient-text">Work & Research</span></h1>
+        <p class="hero-desc">
+            Explore my journey mastering No-Code AI tools for responsible task automation, data analysis, and scientific communication.
+        </p>
+        <div>
+            <a href="#submissions" class="btn">View Submissions <i data-lucide="arrow-right" size="18"></i></a>
+            <a href="#about" class="btn btn-outline">About Me</a>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="about-grid">
+            <div>
+                <h2>About Me</h2>
+                <div class="glass-card">
+                    <h3>Kene David Nwosu</h3>
+                    <p style="color: var(--accent-primary); margin-bottom: 1rem;">Scientist, Writer & Educator</p>
+                    <p style="margin-bottom: 1.5rem;">
+                        I am a Global Public Health specialist and data analyst with a passion for leveraging technology in research. 
+                        As a PhD student and instructor at The GRAPH Network, I bridge the gap between complex data and actionable health insights.
+                        I founded <strong>ScienceMeSoftly.com</strong> to make science accessible through creative writing.
+                    </p>
+                    <p>
+                        My background includes a First Class degree in Biology from Vassar College and an MSc from the University of Geneva. 
+                        I have extensive experience teaching biology, physics, and mathematics across the globe, from the UK to Costa Rica.
+                    </p>
+                    
+                    <div class="profile-badges">
+                        <span class="badge"><i data-lucide="graduation-cap" size="14"></i> MSc Global Public Health</span>
+                        <span class="badge"><i data-lucide="microscope" size="14"></i> Generative AI Researcher</span>
+                        <span class="badge"><i data-lucide="languages" size="14"></i> English, Spanish, French</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats / Highlights -->
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="glass-card" style="text-align: center;">
+                    <i data-lucide="brain-circuit" size="40" color="var(--accent-secondary)"></i>
+                    <h4 style="margin-top: 1rem;">Focus</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Applying LLMs to Epidemiological Data</p>
+                </div>
+                <div class="glass-card" style="text-align: center;">
+                    <i data-lucide="code-2" size="40" color="var(--accent-tertiary)"></i>
+                    <h4 style="margin-top: 1rem;">Tools</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">R, Python, ChatGPT, Claude, Julius AI</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About The Course Section -->
+    <section id="course">
+        <h2>About The Course</h2>
+        <p style="max-width: 700px; margin-bottom: 3rem; color: #cbd5e1;">
+            "Generative AI for Work & Research" is an 8-week intensive cohort course designed to teach responsible use of AI tools for task automation, 
+            document generation, and data analysis without writing complex code.
+        </p>
+
+        <div class="modules-grid">
+            <!-- Module 1 -->
+            <div class="glass-card module-card">
+                <span class="module-number">01</span>
+                <h3>Websites & Docs</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                    Understanding LLMs, generating structured Markdown/HTML, and building simple research websites.
+                </p>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="glass-card module-card">
+                <span class="module-number">02</span>
+                <h3>Automated Analysis</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                    Using Julius AI and Code Interpreter to process datasets, visualize results, and create reports.
+                </p>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="glass-card module-card">
+                <span class="module-number">03</span>
+                <h3>Text Analysis</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                    Literature reviews with Elicit, sentiment analysis, and knowledge synthesis from text collections.
+                </p>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="glass-card module-card">
+                <span class="module-number">04</span>
+                <h3>Custom Chatbots</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                    Building RAG systems, custom GPTs, and interactive chatbots for knowledge management.
+                </p>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="glass-card module-card">
+                <span class="module-number">05</span>
+                <h3>Task Automation</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                    Designing AI agents for email automation, app-to-app workflows, and browser control.
+                </p>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="glass-card module-card">
+                <span class="module-number">06</span>
+                <h3>Communication</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                    Creating AI-generated video abstracts, scientific figures, and prompt engineering for visuals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weekly Submissions Section -->
+    <section id="submissions">
+        <h2>Weekly Submissions</h2>
+        <div class="submissions-grid">
+            <!-- Item 1 -->
+            <div class="glass-card submission-card">
+                <div>
+                    <span class="status-badge">Completed</span>
+                    <h4>Course Website</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1rem;">
+                        Built a personal portfolio using AI-generated HTML/CSS to showcase course progress.
+                    </p>
+                </div>
+                <a href="#" class="btn" style="width: 100%; justify-content: center; font-size: 0.9rem;">View Project</a>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="glass-card submission-card">
+                <div>
+                    <span class="status-badge status-pending">Coming Soon</span>
+                    <h4>Data Analysis Report</h4>
+                    <div class="placeholder-image">
+                        <i data-lucide="bar-chart-2"></i>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">
+                        Automated analysis of public health datasets using Julius AI.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="glass-card submission-card">
+                <div>
+                    <span class="status-badge status-pending">Coming Soon</span>
+                    <h4>Literature Review Bot</h4>
+                    <div class="placeholder-image">
+                        <i data-lucide="bot"></i>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">
+                        A custom GPT configured to synthesize papers on Infectious Epidemiology.
+                    </p>
+                </div>
+            </div>
+            
+             <!-- Item 4 -->
+             <div class="glass-card submission-card">
+                <div>
+                    <span class="status-badge status-pending">Coming Soon</span>
+                    <h4>Capstone Project</h4>
+                    <div class="placeholder-image">
+                        <i data-lucide="rocket"></i>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">
+                        Final presentation demonstrating responsible AI practice in a real-world scenario.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Kene David Nwosu. Built for "Generative AI for Work & Research".</p>
+        <div class="social-links">
+            <a href="https://www.thegraphcourses.org" target="_blank">The Graph Courses</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Parallax effect for blobs
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 20;
+                blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
