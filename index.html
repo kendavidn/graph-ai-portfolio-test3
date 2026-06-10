@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/05/31/13/20260531135230-WW4RRFYK.js" defer></script>
-    
+    <script src="https://files.bpcontent.cloud/2026/05/31/13/20260531135230-WW4RRFYK.js" defer></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,15 +13,15 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --text-color: #e2e8f0;
-            --accent-primary: #38bdf8;
-            --accent-secondary: #818cf8;
-            --accent-tertiary: #2dd4bf;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(148, 163, 184, 0.1);
-            --glass-shine: rgba(255, 255, 255, 0.05);
-            --gradient-main: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --bg-color: #f8fafc;
+            --text-color: #0f172a;
+            --accent-primary: #0284c7;
+            --accent-secondary: #4f46e5;
+            --accent-tertiary: #0d9488;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(15, 23, 42, 0.1);
+            --glass-shine: rgba(255, 255, 255, 0.5);
+            --gradient-main: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
 
         * {
@@ -56,7 +54,7 @@
         .blob {
             position: absolute;
             filter: blur(80px);
-            opacity: 0.4;
+            opacity: 0.3;
             border-radius: 50%;
             animation: float 20s infinite alternate;
         }
@@ -96,7 +94,7 @@
         h1, h2, h3, h4 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            color: #ffffff;
+            color: var(--text-color);
             margin-bottom: 1rem;
         }
 
@@ -122,14 +120,14 @@
             align-items: center;
             z-index: 100;
             backdrop-filter: blur(10px);
-            background: rgba(15, 23, 42, 0.5);
+            background: rgba(255, 255, 255, 0.8);
             border-bottom: 1px solid var(--card-border);
         }
 
         .logo {
             font-weight: 700;
             font-size: 1.25rem;
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -197,7 +195,7 @@
             font-size: 1.25rem;
             max-width: 600px;
             margin-bottom: 2.5rem;
-            color: #cbd5e1;
+            color: #475569;
         }
 
         .btn {
@@ -217,7 +215,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2);
         }
 
         .btn-outline {
@@ -228,7 +226,7 @@
         }
 
         .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(2, 132, 199, 0.1);
         }
 
         /* Glass Cards */
@@ -242,6 +240,7 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .glass-card::before {
@@ -275,7 +274,7 @@
         }
 
         .badge {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.05);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -292,7 +291,7 @@
         }
 
         .module-card {
-            background: rgba(15, 23, 42, 0.6);
+            background: rgba(255, 255, 255, 0.6);
             border-left: 4px solid var(--accent-secondary);
         }
 
@@ -323,13 +322,13 @@
         .placeholder-image {
             width: 100%;
             height: 150px;
-            background: linear-gradient(135deg, #1e293b, #334155);
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
             border-radius: 0.5rem;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #64748b;
+            color: #475569;
         }
 
         .status-badge {
@@ -337,24 +336,24 @@
             font-size: 0.75rem;
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
-            background: rgba(45, 212, 191, 0.2);
+            background: rgba(13, 148, 136, 0.1);
             color: var(--accent-tertiary);
             margin-bottom: 0.5rem;
         }
 
         .status-pending {
             background: rgba(148, 163, 184, 0.2);
-            color: #94a3b8;
+            color: #475569;
         }
 
         /* Footer */
         footer {
             padding: 4rem 10%;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(248, 250, 252, 0.9);
             border-top: 1px solid var(--card-border);
             text-align: center;
             font-size: 0.9rem;
-            color: #94a3b8;
+            color: #475569;
         }
 
         .social-links {
@@ -367,6 +366,7 @@
         .social-links a {
             color: var(--text-color);
             transition: color 0.3s;
+            text-decoration: none;
         }
 
         .social-links a:hover {
@@ -378,21 +378,19 @@
             h1 { font-size: 2.5rem; }
             section { padding: 4rem 5%; }
             .about-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Simplified for mobile */
+            .nav-links { display: none; }
             .logo { z-index: 101; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Animated Background -->
     <div class="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Navigation -->
     <nav>
         <a href="#" class="logo">
             <i data-lucide="sparkles"></i>
@@ -402,10 +400,10 @@
             <a href="#about">About Me</a>
             <a href="#course">The Course</a>
             <a href="#submissions">Submissions</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="hero">
         <p class="hero-subtitle">Portfolio Submission</p>
         <h1>Generative AI for <br><span class="gradient-text">Work & Research</span></h1>
@@ -418,7 +416,6 @@
         </div>
     </section>
 
-    <!-- About Me Section -->
     <section id="about">
         <div class="about-grid">
             <div>
@@ -426,12 +423,12 @@
                 <div class="glass-card">
                     <h3>Kene David Nwosu</h3>
                     <p style="color: var(--accent-primary); margin-bottom: 1rem;">Scientist, Writer & Educator</p>
-                    <p style="margin-bottom: 1.5rem;">
+                    <p style="margin-bottom: 1.5rem; color: #475569;">
                         I am a Global Public Health specialist and data analyst with a passion for leveraging technology in research. 
                         As a PhD student and instructor at The GRAPH Network, I bridge the gap between complex data and actionable health insights.
                         I founded <strong>ScienceMeSoftly.com</strong> to make science accessible through creative writing.
                     </p>
-                    <p>
+                    <p style="color: #475569;">
                         My background includes a First Class degree in Biology from Vassar College and an MSc from the University of Geneva. 
                         I have extensive experience teaching biology, physics, and mathematics across the globe, from the UK to Costa Rica.
                     </p>
@@ -444,104 +441,93 @@
                 </div>
             </div>
             
-            <!-- Stats / Highlights -->
             <div style="display: flex; flex-direction: column; gap: 1.5rem;">
                 <div class="glass-card" style="text-align: center;">
                     <i data-lucide="brain-circuit" size="40" color="var(--accent-secondary)"></i>
                     <h4 style="margin-top: 1rem;">Focus</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Applying LLMs to Epidemiological Data</p>
+                    <p style="font-size: 0.9rem; color: #475569;">Applying LLMs to Epidemiological Data</p>
                 </div>
                 <div class="glass-card" style="text-align: center;">
                     <i data-lucide="code-2" size="40" color="var(--accent-tertiary)"></i>
                     <h4 style="margin-top: 1rem;">Tools</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">R, Python, ChatGPT, Claude, Julius AI</p>
+                    <p style="font-size: 0.9rem; color: #475569;">R, Python, ChatGPT, Claude, Julius AI</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About The Course Section -->
     <section id="course">
         <h2>About The Course</h2>
-        <p style="max-width: 700px; margin-bottom: 3rem; color: #cbd5e1;">
+        <p style="max-width: 700px; margin-bottom: 3rem; color: #475569;">
             "Generative AI for Work & Research" is an 8-week intensive cohort course designed to teach responsible use of AI tools for task automation, 
             document generation, and data analysis without writing complex code.
         </p>
 
         <div class="modules-grid">
-            <!-- Module 1 -->
             <div class="glass-card module-card">
                 <span class="module-number">01</span>
                 <h3>Websites & Docs</h3>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
                     Understanding LLMs, generating structured Markdown/HTML, and building simple research websites.
                 </p>
             </div>
 
-            <!-- Module 2 -->
             <div class="glass-card module-card">
                 <span class="module-number">02</span>
                 <h3>Automated Analysis</h3>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
                     Using Julius AI and Code Interpreter to process datasets, visualize results, and create reports.
                 </p>
             </div>
 
-            <!-- Module 3 -->
             <div class="glass-card module-card">
                 <span class="module-number">03</span>
                 <h3>Text Analysis</h3>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
                     Literature reviews with Elicit, sentiment analysis, and knowledge synthesis from text collections.
                 </p>
             </div>
 
-            <!-- Module 4 -->
             <div class="glass-card module-card">
                 <span class="module-number">04</span>
                 <h3>Custom Chatbots</h3>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
                     Building RAG systems, custom GPTs, and interactive chatbots for knowledge management.
                 </p>
             </div>
 
-            <!-- Module 5 -->
             <div class="glass-card module-card">
                 <span class="module-number">05</span>
                 <h3>Task Automation</h3>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
                     Designing AI agents for email automation, app-to-app workflows, and browser control.
                 </p>
             </div>
 
-            <!-- Module 6 -->
             <div class="glass-card module-card">
                 <span class="module-number">06</span>
                 <h3>Communication</h3>
-                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #cbd5e1;">
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
                     Creating AI-generated video abstracts, scientific figures, and prompt engineering for visuals.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Weekly Submissions Section -->
     <section id="submissions">
         <h2>Weekly Submissions</h2>
         <div class="submissions-grid">
-            <!-- Item 1 -->
             <div class="glass-card submission-card">
                 <div>
                     <span class="status-badge">Completed</span>
                     <h4>Course Website</h4>
-                    <p style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 1rem;">
+                    <p style="font-size: 0.9rem; color: #475569; margin-bottom: 1rem;">
                         Built a personal portfolio using AI-generated HTML/CSS to showcase course progress.
                     </p>
                 </div>
                 <a href="#" class="btn" style="width: 100%; justify-content: center; font-size: 0.9rem;">View Project</a>
             </div>
 
-            <!-- Item 2 -->
             <div class="glass-card submission-card">
                 <div>
                     <span class="status-badge status-pending">Coming Soon</span>
@@ -549,13 +535,12 @@
                     <div class="placeholder-image">
                         <i data-lucide="bar-chart-2"></i>
                     </div>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">
+                    <p style="font-size: 0.9rem; color: #475569;">
                         Automated analysis of public health datasets using Julius AI.
                     </p>
                 </div>
             </div>
 
-            <!-- Item 3 -->
             <div class="glass-card submission-card">
                 <div>
                     <span class="status-badge status-pending">Coming Soon</span>
@@ -563,13 +548,12 @@
                     <div class="placeholder-image">
                         <i data-lucide="bot"></i>
                     </div>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">
+                    <p style="font-size: 0.9rem; color: #475569;">
                         A custom GPT configured to synthesize papers on Infectious Epidemiology.
                     </p>
                 </div>
             </div>
             
-             <!-- Item 4 -->
              <div class="glass-card submission-card">
                 <div>
                     <span class="status-badge status-pending">Coming Soon</span>
@@ -577,7 +561,7 @@
                     <div class="placeholder-image">
                         <i data-lucide="rocket"></i>
                     </div>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">
+                    <p style="font-size: 0.9rem; color: #475569;">
                         Final presentation demonstrating responsible AI practice in a real-world scenario.
                     </p>
                 </div>
@@ -585,7 +569,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <section id="contact">
+        <h2>Contact for Consultation</h2>
+        <div class="glass-card" style="display: flex; justify-content: center; padding: 2rem 0;">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSft073mM3mycvR44K66exwMZgVme44p03OTm5r6rDsvQ4EPfA/viewform?embedded=true" width="100%" height="774" frameborder="0" marginheight="0" marginwidth="0" style="max-width: 640px;">Loading…</iframe>
+        </div>
+    </section>
+
     <footer>
         <p>© 2026 Kene David Nwosu. Built for "Generative AI for Work & Research".</p>
         <div class="social-links">
